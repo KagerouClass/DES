@@ -5,7 +5,9 @@
 /* Those lines marked by [%] are added by Black White(iceman@zju.edu.cn)
 for more readability.
 */
-
+//This is a homework back up. We are commanded to rewrite function f() in this code.
+//The rest of the code is provided by Black White(the teacher of the course).
+//programmer:è”¡å±•ç’‹ 3150105426
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -535,14 +537,14 @@ static long32 f(ulong32 r, unsigned char subkey[8])
 		m[i] = (unsigned char)0;
 		t[i] = (unsigned char)0;
 	}
-	//////////////step1¡ý//////////////pass
+	//////////////step1Â¡Ã½//////////////pass
 	s[0] = r & 0x000000FF;
 	s[1] = (r & 0x0000FF00) >> 8;
 	s[2] = (r & 0x00FF0000) >> 16;
 	s[3] = (r & 0xFF000000) >> 24;//LITTLE ENDING
 
 	
-	//////////////step2¡ý//////////////pass
+	//////////////step2Â¡Ã½//////////////pass
 	for (i = 0; i != 8; ++i)
 	{
 		for (j = 0; j != 6; ++j)
@@ -559,12 +561,12 @@ static long32 f(ulong32 r, unsigned char subkey[8])
 				plaintext[i] |= temp << -((fromSource - 1) % 8 - j);
 		}
 	}
-	//////////////step3¡ý//////////////pass
+	//////////////step3Â¡Ã½//////////////pass
 	for (i = 0; i != 8; ++i)
 	{
 		plaintext[i] ^= subkey[7 - i];
 	}
-	//////////////step4¡ý//////////////pass
+	//////////////step4Â¡Ã½//////////////pass
 	for (i = 0; i != 8; ++i)
 	{
 		rowcol = (plaintext[i] & 0x20) | ((plaintext[i] & 1) ? 0x10 : 0x00) | ((plaintext[i] >> 1) & 0x0F);
@@ -573,7 +575,7 @@ static long32 f(ulong32 r, unsigned char subkey[8])
 		else
 			m[3 - i / 2] |= sbox[7 - i][rowcol] << 4;
 	}
-	//////////////step5¡ý//////////////
+	//////////////step5Â¡Ã½//////////////
 	for (i = 0; i != 32; ++i)
 	{
 		fromSource = sbox_perm_table[i];
